@@ -21,9 +21,16 @@ describe 'The HelloWorld App' do
 
   it "says story" do
     get '/story'
+    last_response.should be_ok
+  end
+
+  it "says story with param" do
+    get '/story?season=1&num=2'
+    last_response.should be_ok
   end
 
   it "demo test" do
     get '/demo'
+    last_response.should be_ok
   end
 end
