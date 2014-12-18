@@ -27,8 +27,18 @@ describe 'The HelloWorld App' do
     expect(last_response).to be_ok
   end
 
+  it "says story with param(season2)" do
+    get '/story?season=2&num=2'
+    expect(last_response).to be_ok
+  end
+
   it "says story with bad param" do
     get '/story?nicopuri=joshido'
+    expect(last_response).to be_ok
+  end
+
+  it "says story with bad param" do
+    get '/story?season=1&num=20'
     expect(last_response).to be_ok
   end
 

@@ -25,8 +25,9 @@ get '/story' do
   stories = Pebbles::LoveLive::Story.new.story
 
   num = params[:num].to_i
-  num = 1 if num.nil?
+  num = 1 if num.nil? || num > 13
 
+  season = params[:season].to_i
   season = 1 if params[:season].nil?
 
   case season
@@ -38,13 +39,14 @@ get '/story' do
     s = stories[:season1]
   end
 
-  puts num.class
   story = {
+    season: season,
     number: s[num].number ,
     title:  s[num].title, 
     desc:   s[num].description
   }
   
+  puts story
   story.to_json
 end
 
