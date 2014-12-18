@@ -46,29 +46,10 @@ get '/story' do
     desc:   s[num].description
   }
   
-  puts story
   story.to_json
 end
 
 def choice_member(param)
-  case param
-  when "honoka" then
-    Pebbles::LoveLive.honoka
-  when "umi" then
-    Pebbles::LoveLive.umi
-  when "kotori" then
-    Pebbles::LoveLive.kotori
-  when "maki" then
-    Pebbles::LoveLive.maki
-  when "hanayo" then
-    Pebbles::LoveLive.hanayo
-  when "rin" then
-    Pebbles::LoveLive.rin
-  when "eli" then
-    Pebbles::LoveLive.eli
-  when "nico" then
-    Pebbles::LoveLive.nico
-  else
-    Pebbles::LoveLive.nozomi
-  end
+  pbl = Pebbles::LoveLive
+  m = pbl.send(param || :nozomi)
 end
