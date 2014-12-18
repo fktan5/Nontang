@@ -2,7 +2,7 @@ require 'sinatra'
 require 'json'
 
 get '/' do
-  'LoveLiveAPI'
+  'LoveLiveAPI * usage : member?name=honoka , story?num=1&season=1'
 end
 
 get '/member' do
