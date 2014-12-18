@@ -26,6 +26,7 @@ get '/story' do
 
   num = params[:num].to_i
   num = 1 if num.nil? || num > 13
+  num -= 1
 
   season = params[:season].to_i
   season = 1 if params[:season].nil?
