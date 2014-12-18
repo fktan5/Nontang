@@ -2,13 +2,23 @@ require 'sinatra'
 require 'json'
 
 get '/' do
-  'IT WORKS!'
+  'LoveLiveAPI'
 end
 
 get '/member' do
-  member = { name: "Name" }
-
-  member.to_json
+  member = choice_member(params[:name])
+  m = {
+    name: member.name,
+    cv:   member.cv,
+    birth: member.birth,
+    birth_zodiac: member.zodiac_sign,
+    blood: member.blood_type,
+    three_size: member.three_size,
+    favorite_food: member.favorite_food,
+    dislike_food: member.dislike_food,
+    profile: member.profile
+  }
+  m.to_json
 end
 
 get '/story' do
@@ -38,7 +48,25 @@ get '/story' do
   story.to_json
 end
 
-get '/demo' do
-  nozomi = Pebbles::LoveLive.nozomi
-  nozomi.name
+def choice_member(param)
+  case param
+  when "honoka" then
+    Pebbles::LoveLive.honoka
+  when "umi" then
+    Pebbles::LoveLive.umi
+  when "kotori" then
+    Pebbles::LoveLive.kotori
+  when "maki" then
+    Pebbles::LoveLive.maki
+  when "hanayo" then
+    Pebbles::LoveLive.hanayo
+  when "rin" then
+    Pebbles::LoveLive.rin
+  when "eli" then
+    Pebbles::LoveLive.eli
+  when "nico" then
+    Pebbles::LoveLive.nico
+  else
+    Pebbles::LoveLive.nozomi
+  end
 end

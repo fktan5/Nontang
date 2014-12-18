@@ -18,7 +18,6 @@ describe 'The HelloWorld App' do
     expect(last_response.body).to eq('IT WORKS!')
   end
 
-
   it "says story" do
     get '/story'
     last_response.should be_ok
@@ -29,8 +28,23 @@ describe 'The HelloWorld App' do
     last_response.should be_ok
   end
 
-  it "demo test" do
-    get '/demo'
+  it "says story with bad param" do
+    get '/story?nicopuri=joshido'
+    last_response.should be_ok
+  end
+
+  it "says member(No param)" do
+    get '/member'
+    last_response.should be_ok
+  end
+
+  it "says member(with param)" do
+    get '/member?name=honoka'
+    last_response.should be_ok
+  end
+
+  it "says member(with bad param)" do
+    get '/member?wrong=param'
     last_response.should be_ok
   end
 end
