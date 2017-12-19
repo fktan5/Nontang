@@ -43,3 +43,9 @@ DEPENDENCIES
   rspec
   sinatra
   unicorn
+
+RUBY VERSION
+   ruby 2.4.2p198
+
+BUNDLED WITH
+   1.16.0
