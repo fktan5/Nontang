@@ -1,8 +1,18 @@
 require 'sinatra'
 require 'json'
+require 'yaml'
 
 get '/' do
   'LoveLiveAPI * usage : member?name=honoka , story?num=1&season=1'
+end
+
+get '/aqours' do
+  aq = YAML.load_file("aqours.yml")
+  if(params[:name] == nil)
+    aq["dia"].to_json
+  else
+    aq[params[:name]].to_json
+  end
 end
 
 get '/member' do
